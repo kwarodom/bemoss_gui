@@ -7,8 +7,9 @@ sudo apt-get update
 sudo apt-get install build-essential openssl git g++ libxml2-dev libxslt1-dev python-dev libevent-dev libssl-dev python-tk python-pip libffi-dev libpq-dev python-psycopg2 python-zmq gnome-terminal --assume-yes
 sudo pip install netifaces networkx colormath
 sudo mkdir ~/workspace
-#Remove the existing bemoss_os folder
+#Remove the existing bemoss_os and volttron folder
 sudo rm -rf ~/workspace/bemoss_os
+sudo rm -rf ~/.volttron/
 #Clone the bemoss_os repository
 cd ~/workspace
 sudo git clone -b master https://github.com/bemoss/bemoss_os.git
@@ -54,6 +55,7 @@ cd ~/workspace
 wget http://downloads.datastax.com/community/dsc-cassandra-2.1.7-bin.tar.gz
 tar -xvzf dsc-cassandra-2.1.7-bin.tar.gz
 sudo rm dsc-cassandra-2.1.7-bin.tar.gz 
+sudo rm -rf cassandra/
 sudo mv dsc-cassandra-2.1.7 cassandra
 # Install Dependencies in virtual env.
 cd ~/workspace/bemoss_os/env
