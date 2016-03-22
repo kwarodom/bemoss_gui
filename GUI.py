@@ -262,7 +262,7 @@ class GUI:
         catebox = ttk.Combobox(butframe2, textvariable=self.category)
         catebox.pack(side=Tkinter.RIGHT, padx=5, pady=2.5)
         catebox.config(values=('Thermostat', 'Plugload', 'Lighting',
-                               'Network', 'RTU', 'VAV', 'DeviceDiscovery'))
+                               'RTU', 'VAV', 'DeviceDiscovery', 'Network', 'MultiBuilding'))
         agcate = ttk.Label(butframe2, text='Agent category:')
         agcate.pack(side=Tkinter.RIGHT, padx=5, pady=2.5)
 
