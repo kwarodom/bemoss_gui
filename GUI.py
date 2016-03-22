@@ -78,10 +78,14 @@ class GUI:
 
         self.button_quit = ttk.Button(root, text='Run BEMOSS', command=self.run_software)
         self.button_quit.pack(side=Tkinter.LEFT, fill=Tkinter.BOTH, expand=True, pady=15, padx=10)
+        self.button_runNode = ttk.Button(root, text='Run BEMOSS Node', command=self.run_bemoss_node)
+        self.button_runNode.pack(side=Tkinter.LEFT, fill=Tkinter.BOTH, expand=True, pady=15, padx=10)
         self.button_run = ttk.Button(root, text='Stop BEMOSS', command=self.stop_software)
         self.button_run.pack(side=Tkinter.LEFT, fill=Tkinter.BOTH, expand=True, pady=15, padx=10)
         self.button_adv = ttk.Button(root, text='Advanced Setting', command=self.adv_set)
         self.button_adv.pack(side=Tkinter.LEFT, fill=Tkinter.BOTH, expand=True, pady=15, padx=10)
+
+
         # buttons
 
     def find_img(self):
@@ -144,6 +148,11 @@ class GUI:
     def run_bemoss(self):
         bemoss_path = os.path.expanduser("~/workspace/bemoss_os")
         path = 'nohup x-terminal-emulator -e "bash -c \'sudo ~/workspace/bemoss_os/runBEMOSS.sh; bash\'"'
+        subprocess.Popen(path, cwd=bemoss_path, shell=True)
+
+    def run_bemoss_node(self):
+        bemoss_path = os.path.expanduser("~/workspace/bemoss_os")
+        path = 'nohup x-terminal-emulator -e "bash -c \'sudo ~/workspace/bemoss_os/bemoss_lib/multi_node/runBEMOSS_node.sh; bash\'"'
         subprocess.Popen(path, cwd=bemoss_path, shell=True)
 
     def stop_bemoss(self):
@@ -449,7 +458,6 @@ class GUI:
         self.pwconfirm()
 
     def pwconfirm(self):
-        self.pswd
         self.passwd = self.pswd.get()
         if self.passwd is not None:
             output = volttronFunc.agent_status(self.passwd)
@@ -792,7 +800,7 @@ def main():
     root = Tkinter.Tk()
     root.geometry('380x380+500+100')
     root.resizable(True, True)
-    root.minsize(width=380, height=380)
+    root.minsize(width=580, height=380)
     root.title('BEMOSS (Virginia Tech)')
     app = GUI()
     root.mainloop()
