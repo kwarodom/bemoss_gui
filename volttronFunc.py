@@ -99,7 +99,14 @@ def repackage_agent(passwd, agentType):
 
 def configure_agent(passwd, agent_id, agentType):
     try:
-        cmd = 'echo \'' + str(passwd) + '\' | sudo -S ~/workspace/bemoss_os/env/bin/volttron-pkg configure /tmp/volttron_wheels/' + agentType.lower() + '-0.1-py2-none-any.whl ~/workspace/bemoss_os/Agents/LaunchFiles/' + str(agent_id) + '.launch.json'
+        if agentType == 'NetworkAgent':
+            cmd = 'echo \'' + str(passwd) + '\' | sudo -S ~/workspace/bemoss_os/env/bin/volttron-pkg configure /tmp/volttron_wheels/networkagent-0.1-py2-none-any.whl ~/workspace/bemoss_os/Agents/NetworkAgent/networkagent.launch.json'
+        elif agentType == 'MultiBuildingAgent':
+            cmd = 'echo \'' + str(passwd) + '\' | sudo -S ~/workspace/bemoss_os/env/bin/volttron-pkg configure /tmp/volttron_wheels/multibuildingagent-0.1-py2-none-any.whl ~/workspace/bemoss_os/Agents/MultiBuilding/multibuildingagent.launch.json'
+        elif agentType == 'DeviceDiscoveryAgent':
+            cmd = 'echo \'' + str(passwd) + '\' | sudo -S ~/workspace/bemoss_os/env/bin/volttron-pkg configure /tmp/volttron_wheels/devicediscoveryagent-0.1-py2-none-any.whl ~/workspace/bemoss_os/Agents/DeviceDiscoveryAgent/devicediscoveryagent.launch.json'
+        else:
+            cmd = 'echo \'' + str(passwd) + '\' | sudo -S ~/workspace/bemoss_os/env/bin/volttron-pkg configure /tmp/volttron_wheels/' + agentType.lower() + '-0.1-py2-none-any.whl ~/workspace/bemoss_os/Agents/LaunchFiles/' + str(agent_id) + '.launch.json'
         subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     except Exception as er:
         print er
