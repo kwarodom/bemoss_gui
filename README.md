@@ -4,7 +4,7 @@
 
 ## Get Started:
 BEMOSS GUI is the graph user interface for Building Energy Management Open Source Software, which is developed by Advanced Research Institute, Virginia Tech.
-To install BEMOSS, please visit the [Wiki](https://github.com/zxymark221/bemoss_gui/wiki) for installation instruction.
+To install BEMOSS, please visit the [Wiki](https://github.com/bemoss/bemoss_gui/wiki) for installation instruction.
 
 ## Brief Introduction:
 BEMOSS GUI provides the BEMOSS users, both developers and non-developers, the convenience to install, run, configure and debug BEMOSS. Below is the brief introduction of what BEMOSS GUI can be used to.
@@ -25,6 +25,7 @@ From Main Panel, you can:
 
 - Find out web server IP
 - Run BEMOSS
+- Run as a BEMOSS node
 - Stop BEMOSS
 - Go to Advanced Setting
 
