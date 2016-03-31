@@ -1,16 +1,16 @@
-# BEMOSS GUI
+# BEMOSS&trade; Launcher Wizard
 
 <img src="BEMOSS_logo.png" alt="bemoss logo" height="64px">
 
 ## Get Started:
-BEMOSS GUI is the graph user interface for Building Energy Management Open Source Software, which is developed by Advanced Research Institute, Virginia Tech.
-To install BEMOSS, please visit the [Wiki](https://github.com/bemoss/bemoss_gui/wiki) for installation instruction.
+BEMOSS&trade; Launcher Wizard is the graph user interface for Building Energy Management Open Source Software, which is developed by Advanced Research Institute, Virginia Tech.
+To install BEMOSS&trade;, please visit the [Wiki](https://github.com/bemoss/bemoss_gui/wiki) for installation instruction.
 
 ## Brief Introduction:
-BEMOSS GUI provides the BEMOSS users, both developers and non-developers, the convenience to install, run, configure and debug BEMOSS. Below is the brief introduction of what BEMOSS GUI can be used to.
+BEMOSS&trade; Launcher Wizard provides both developers and non-developers the convenience to install, run, configure and debug BEMOSS&trade;. Below is the brief introduction of what BEMOSS&trade; Launcher Wizard can be used to.
 
-### Up and running BEMOSS GUI
-To get BEMOSS GUI running, some packages might needed, if you do not have these package, the first time you start BEMOSS GUI using the file startBEMOSS_GUI.sh, those packages will be automatically installed.<br>
+### Get Started with BEMOSS&trade; Launcher Wizard
+To get BEMOSS&trade; Launcher Wizard running, some packages might needed, if you do not have these package, the first time you start BEMOSS&trade; Launcher Wizard using the file startBEMOSS_GUI.sh, those packages will be automatically installed.<br>
 To be more specific, packages needed are ImageTK and netifaces, these two packages can also be installed by typing the commands below in you Terminal:
 ```
 $ sudo apt-get install python-imaging-tk
@@ -30,13 +30,13 @@ From Main Panel, you can:
 - Go to Advanced Setting
 
 ### Installation Detection
-If BEMOSS is not installed, click any of these three buttons will prompt with BEMOSS installation request. Click OK to install BEMOSS.<br>
+If BEMOSS&trade; is not installed, click any of these three buttons will prompt with BEMOSS&trade; installation request. Click OK to install BEMOSS.<br>
 <img src="demo_pics/BEMOSS_Install.JPG" alt="install prompt" height="400px" align="center">
 
 ### Tab1: Setting
 <img src="demo_pics/BEMOSS_Settings_File.JPG" alt="setting" height="400px">
 
-Setting tab is mainly designed for selecting devices to be discovered before BEMOSS starts running.<br>
+Setting tab is mainly designed for selecting devices to be discovered before BEMOSS&trade; starts running.<br>
 - Get Data: When press this button, what is currently on settings.py will be showed on UI;
 - Submit: After changes have been made, click submit will change the content of settings.py.
 
