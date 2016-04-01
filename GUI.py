@@ -78,7 +78,7 @@ class GUI:
 
         self.button_quit = ttk.Button(root, text='Run BEMOSS', command=self.run_software)
         self.button_quit.pack(side=Tkinter.LEFT, fill=Tkinter.BOTH, expand=True, pady=15, padx=10)
-        self.button_runNode = ttk.Button(root, text='Run BEMOSS Node', command=self.run_bemoss_node)
+        self.button_runNode = ttk.Button(root, text='Run BEMOSS Node', command=self.run_software_asnode)
         self.button_runNode.pack(side=Tkinter.LEFT, fill=Tkinter.BOTH, expand=True, pady=15, padx=10)
         self.button_run = ttk.Button(root, text='Stop BEMOSS', command=self.stop_software)
         self.button_run.pack(side=Tkinter.LEFT, fill=Tkinter.BOTH, expand=True, pady=15, padx=10)
@@ -112,34 +112,32 @@ class GUI:
         ui_path = cwd.replace('bemoss_gui','bemoss_web_ui')
         cassandra_path = cwd.replace('bemoss_gui','cassandra')
         env_path = cwd.replace('bemoss_gui','bemoss_os/env/bin')
-        self.bemoss_installed = os.path.isdir(ui_path) and os.path.isdir(cassandra_path) and os.path.isdir(env_path)
+        bemoss_is_installed = os.path.isdir(ui_path) and os.path.isdir(cassandra_path) and os.path.isdir(env_path)
+
+        if bemoss_is_installed is False:
+            tmp = tkMessageBox.askokcancel(title='Please install BEMOSS at first',
+                                           message='You computer does not have BEMOSS installed, do you want to install BEMOSS right now?',
+                                           parent=root)
+            if tmp is True:
+                self.install_bemoss()
+                return
+            else:
+                return False
+        else:
+            return True
 
 
     def run_software(self):
-        self.detect_bemoss()
-        if self.bemoss_installed is False:
-            tmp = tkMessageBox.askokcancel(title='Please install BEMOSS at first',
-                                           message='You computer does not have BEMOSS installed, do you want to install BEMOSS right now?',
-                                           parent=root)
-            if tmp is True:
-                self.install_bemoss()
-                return
-            else:
-                return
-        self.run_bemoss()
+        bemoss_installed = self.detect_bemoss()
+        if bemoss_installed: self.run_bemoss()
+
+    def run_software_asnode(self):
+        bemoss_installed = self.detect_bemoss()
+        if bemoss_installed: self.run_bemoss_node()
 
     def stop_software(self):
-        self.detect_bemoss()
-        if self.bemoss_installed is False:
-            tmp = tkMessageBox.askokcancel(title='Please install BEMOSS at first',
-                                           message='You computer does not have BEMOSS installed, do you want to install BEMOSS right now?',
-                                           parent=root)
-            if tmp is True:
-                self.install_bemoss()
-                return
-            else:
-                return
-        self.stop_bemoss()
+        bemoss_installed = self.detect_bemoss()
+        if bemoss_installed: self.stop_bemoss()
 
     def install_bemoss(self):
         path = 'nohup x-terminal-emulator -e "bash -c \'sudo ./bemoss_install_v2.sh; bash\'"'
@@ -159,17 +157,8 @@ class GUI:
         pass
 
     def adv_set(self):
-        self.detect_bemoss()
-        if self.bemoss_installed is False:
-            tmp = tkMessageBox.askokcancel(title='Please install BEMOSS at first',
-                                           message='You computer does not have BEMOSS installed, do you want to install BEMOSS right now?',
-                                           parent=root)
-            if tmp is True:
-                self.install_bemoss()
-                return
-            else:
-                return
-        self.new_win()
+        bemoss_installed = self.detect_bemoss()
+        if bemoss_installed: self.new_win()
 
     def new_win(self):
         # advanced setting window
@@ -656,7 +645,7 @@ class GUI:
         clear_but.grid(row=3, column=3, sticky='e', padx=5)
         self.passwd_window_ocf.bind('<Return>', self.shortcut3)
 
-    def shortcut3(self):
+    def shortcut3(self, event):
         self.pwconfirm_ocf()
 
     def pwconfirm_ocf(self):
