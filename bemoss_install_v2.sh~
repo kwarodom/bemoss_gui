@@ -39,7 +39,7 @@ cd ~/workspace
 sudo rm -rf bemoss_web_ui
 #Clone the bemoss_web_ui repository
 # TODO: switch to GitHub repo
-sudo git clone -b master https://github.com/kwarodom/bemoss_web_ui.git
+sudo git clone -b master https://github.com/bemoss/bemoss_web_ui.git
 sudo chmod 777 -R ~/workspace
 #Create the bemossdb database
 sudo -u postgres psql -c "CREATE USER admin WITH PASSWORD 'admin';"
