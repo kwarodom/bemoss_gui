@@ -12,7 +12,7 @@ sudo rm -rf ~/workspace/bemoss_os
 sudo rm -rf ~/.volttron/
 #Clone the bemoss_os repository
 cd ~/workspace
-sudo git clone -b master https://github.com/bemoss/bemoss_os.git
+sudo git clone -b master https://github.com/kwarodom/bemoss_os.git
 sudo chmod 777 -R ~/workspace
 #Compile dependency codes in C/C++
 cd ~/workspace
