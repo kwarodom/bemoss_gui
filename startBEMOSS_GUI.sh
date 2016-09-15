@@ -13,6 +13,10 @@ echo $TK_Installed
 
 if [ "$TK_Installed" = "install ok installed" ]; then
 	echo "Package Installed"
+	cd ~/workspace/bemoss_os
+	. env/bin/activate
+	pip install scipy
+        cd ~/workspace/bemoss_gui
 else
 	echo "Installing Package..."
 	sudo apt-get install python-imaging-tk --assume-yes
